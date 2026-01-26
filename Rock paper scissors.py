@@ -50,7 +50,7 @@ for i in range(3):
   print("")
 #Looping sequence
 while True:
-  player_input = input("Rock(r) paper(p) scissors(s) quit(q) or stats(i)? ") #Get user input
+  player_input = input("Rock(r) paper(p) scissors(s) quit(q) stats(i), or reset(b)? ") #Get user input
   computer_input = random.choice(choices) #Pick random computer input
   #Check winning/tying/losing
   if player_input == "r":
@@ -122,10 +122,37 @@ while True:
     for i in range(3):
       print("")
     quit("Thanks for playing!")
+#Deleting data
+  elif player_input == "b":
+    player_input = input("Are you sure you want to reset the game? (Y/N) ") #Confirmation 1
+    if player_input == "y":
+      player_input = input("Are you really sure? (Y/N) ") #Confirmation 2
+      if player_input == "y":
+        print("Ok then.")
+        #Deleting files and variables
+        os.remove("history.txt")
+        wins = 0
+        ties = 0
+        osses = 0
+        computer_input = ("UNDEFINED")
+        rounds = 0
+        player_input = 0
+        #Deleting sequence
+        print("Deleting data...")
+        time.sleep(1)
+        print("Deleting stats...")
+        time.sleep(1)
+        print("Deleting history.txt...")
+        time.sleep(2)
+        print("Done!")
+        time.sleep(2)
+        #Skip a bunch of lines
+        for i in range(100):
+          print("")
+  else:
   #Error
   #Error01: Computer gives invalid input
   #Error02: Player gives invald input
-  else:
     for i in range(3):
       print("")
     print("Error02: Invalid input.")
