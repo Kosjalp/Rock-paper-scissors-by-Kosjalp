@@ -1,5 +1,7 @@
 # **Rock-paper-scissors-by-Kosjalp**
 
+**Due to an error, releases 1.0-1.1.0 are identical**
+
 This python script will save files to your computer. You can delete them at any time, however they can regenerate with new info.
 The regeneration of the files will only contain a couple words and will only regenerate when running the python file.
 The files will only take 10KB max however they will in most cases be only up to 1KB.
