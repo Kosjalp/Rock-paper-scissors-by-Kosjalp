@@ -50,64 +50,73 @@ for i in range(3):
   print("")
 #Looping sequence
 while True:
-  player_input = input("Rock(r) paper(p) scissors(s) quit(q) stats(i) reset(b), or credits(c)? ") #Get user input
-  computer_input = random.choice(choices) #Pick random computer input
-  #Check winning/tying/losing
-  if player_input == "r":
-    if computer_input == "s":
-      print("You win!")
-      wins += 1
-      rounds += 1
-    elif computer_input == "p":
-      print("You lost...")
-      losses += 1
-      rounds += 1
-    elif computer_input == "r":
-      print("It's a tie.")
-      ties += 1
-      rounds += 1
-    else:
-      for i in range(3):
+  player_input = input("play(p) quit(q) stats(s) reset(r), or credits(c)? ") #Get user input
+  #Playing sequence
+  if player_input == "p":
+    while True:
+      computer_input = random.choice(choices) #Pick random computer input
+      player_input = input("Rock(r), paper(p), scissors(s), or leave playing(q)? ")
+      if player_input == "r":
+        if computer_input == "s":
+          print("You win!")
+          wins += 1
+          rounds += 1
+        elif computer_input == "p":
+          print("You lost...")
+          losses += 1
+          rounds += 1
+        elif computer_input == "r":
+          print("It's a tie.")
+          ties += 1
+          rounds += 1
+        else:
+          for i in range(3):
+            print("")
+            print("Error01: Computer gave invalid input.")
+            print("The computer is not computering")
+          for i in range(3):
+            print("")
+      elif player_input == "s":
+        if computer_input == "s":
+          print("It's a tie.")
+          ties += 1
+          rounds += 1
+        elif computer_input == "p":
+          print("You win!")
+          wins += 1
+          rounds +=1
+        elif computer_input == "r":
+          print("You lost...")
+          losses += 1
+          rounds += 1
+      elif player_input == "p":
+        if computer_input == "s":
+          print("You lost...")
+          losses += 1
+          rounds += 1
+        elif computer_input == "p":
+          print("It's a tie.")
+          ties += 1
+          rounds += 1
+        elif computer_input == "r":
+          print("You win!")
+          wins += 1
+          rounds += 1
+      elif player_input == "q":
         print("")
-        print("Error01: Computer gave invalid input.")
-        print("The computer is not computering")
-      for i in range(3):
+        print("Leave playing chosen... returning to main menu.")
         print("")
-  elif player_input == "s":
-    if computer_input == "s":
-      print("It's a tie.")
-      ties += 1
-      rounds += 1
-    elif computer_input == "p":
-      print("You win!")
-      wins += 1
-      rounds +=1
-    elif computer_input == "r":
-      print("You lost...")
-      losses += 1
-      rounds += 1
-    else:
-      for i in range(3):
         print("")
-      print("Error01: Computer gave invalid input.")
-      print("The computer is not computering")
-      for i in range(3):
-        print("")
-  elif player_input == "p":
-    if computer_input == "s":
-      print("You lost...")
-      losses += 1
-      rounds += 1
-    elif computer_input == "p":
-      print("It's a tie.")
-      ties += 1
-      rounds += 1
-    elif computer_input == "r":
-      print("You win!")
-      wins += 1
-      rounds +=1
+        break
+      else:
+          for i in range(3):
+            print("")
+          print("Error01: Computer gave invalid input.")
+          print("The computer is not computering")
+          for i in range(3):
+            print("")
   #Stats section
-  elif player_input == "i":
+  elif player_input == "s":
     print("Stats:")
     print("")
     print("Wins", wins)
@@ -123,7 +132,7 @@ while True:
       print("")
     quit("Thanks for playing!")
 #Deleting data
-  elif player_input == "b":
+  elif player_input == "r":
     player_input = input("Are you sure you want to reset the game? (Y/N) ") #Confirmation 1
     if player_input == "y":
       player_input = input("Are you really sure? (Y/N) ") #Confirmation 2
