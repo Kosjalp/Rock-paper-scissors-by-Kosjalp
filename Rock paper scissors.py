@@ -14,6 +14,8 @@ losses = 0
 computer_input = ("UNDEFINED")
 choices = ["r", "p", "s"]
 rounds = 0
+money = 0
+combo_wins = 0
 #Get user data
 user = getpass.getuser()
 time_at_logon = datetime.datetime.now().replace(microsecond=0)
@@ -56,6 +58,7 @@ while True:
     while True:
       computer_input = random.choice(choices) #Pick random computer input
       player_input = input("Rock(r), paper(p), scissors(s), or leave playing(q)? ")
+      pre_wins = wins
       if player_input == "r":
         if computer_input == "s":
           print("You win!")
@@ -115,6 +118,21 @@ while True:
           print("The computer is not computering")
           for i in range(3):
             print("")
+      if pre_wins != wins:
+        money += 1
+        combo_wins += 1
+        if combo_wins == 3:
+          money += 3
+          print("3 Combo! Nice!")
+        elif combo_wins == 5:
+          money += 6
+          print("5 Combo! Not bad!")
+        elif combo_wins == 7:
+          money += 10
+          print("7 Combo! Good job!")
+        print(f"You now have {money}$")
+      elif pre_wins == wins:
+        combo_wins = 0
   #Stats section
   elif player_input == "s":
     print("Stats:")
@@ -122,6 +140,8 @@ while True:
     print("Wins", wins)
     print("Losses", losses)
     print("Ties", ties)
+    print("")
+    print(f"You have {money}$.")
     print("")
     score = float((wins+1)/((losses+1)*2)+(ties/2)-(losses/2)) #Calculate overall score
     print("Overall score:", score)
@@ -140,12 +160,15 @@ while True:
         print("Ok then.")
         #Deleting files and variables
         os.remove("history.txt")
+        money = 0
         wins = 0
         ties = 0
         osses = 0
         computer_input = ("UNDEFINED")
         rounds = 0
         player_input = 0
+        pre_wins = 0
+        combo_wins = 0
         #Deleting sequence
         print("Deleting data...")
         time.sleep(1)
