@@ -50,7 +50,7 @@ for i in range(3):
   print("")
 #Looping sequence
 while True:
-  player_input = input("Rock(r) paper(p) scissors(s) quit(q) stats(i), or reset(b)? ") #Get user input
+  player_input = input("Rock(r) paper(p) scissors(s) quit(q) stats(i) reset(b), or credits(c)? ") #Get user input
   computer_input = random.choice(choices) #Pick random computer input
   #Check winning/tying/losing
   if player_input == "r":
@@ -149,6 +149,29 @@ while True:
         #Skip a bunch of lines
         for i in range(100):
           print("")
+  elif player_input == "c":
+    time.sleep(1)
+    print("Credits:")
+    print("")
+    time.sleep(1)
+    print("Made by Kosjalp on github")
+    print("https://github.com/Kosjalp")
+    print("")
+    time.sleep(2)
+    print("Hosted on GitHub")
+    print("https://github.com/Kosjalp/Rock-paper-scissors-by-Kosjalp")
+    print("")
+    time.sleep(2)
+    print("Thank you to:")
+    time.sleep(1)
+    print("Techspark academy for inspiration")
+    time.sleep(1)
+    print("")
+    print("")
+    time.sleep(1)
+    print("Thanks for playing!")
+    for i in range(3):
+      print("")
   else:
   #Error
   #Error01: Computer gives invalid input
