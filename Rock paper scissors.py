@@ -171,6 +171,7 @@ while True:
         #Deleting files and variables
         os.remove("history.txt")
         shutil.rmtree("save_data")
+        shutil.rmtree("__pycache__")
         money = 0
         wins = 0
         ties = 0
