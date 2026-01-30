@@ -7,6 +7,10 @@ import random
 import getpass
 import os
 import datetime
+import shutil
+from pathlib import Path
+from updatesavedata import updatesavedata
+from updateregulardata import updateregulardata
 #Define variables
 wins = 0
 ties = 0
@@ -26,8 +30,13 @@ else:
   with open("history.txt", "w") as h:
     h.write("Rock paper scissors logon history: \n")
     h.write("\n")
+if os.path.exists("save_data"):
+  pass
+else:
+  Path("save_data").mkdir(exist_ok=True)
 with open("history.txt", "a") as h:
   h.write(f"User {user} logged on at date {time_at_logon}\n")
+money, wins, losses, ties = updateregulardata()
 #Loading sequence
 print("Welcome to rock paper scissors!")
 time.sleep(1)
@@ -44,7 +53,7 @@ time.sleep(1)
 print("Done!")
 for i in range(3):
   print("")
-print("Rock paper sissors")
+print("Rock paper scissors")
 print("©Kosjalp studios inc. (not actually)")
 print("")
 time.sleep(2)
@@ -133,6 +142,7 @@ while True:
         print(f"You now have {money}$")
       elif pre_wins == wins:
         combo_wins = 0
+      updatesavedata(wins, money, losses, ties)
   #Stats section
   elif player_input == "s":
     print("Stats:")
@@ -160,10 +170,11 @@ while True:
         print("Ok then.")
         #Deleting files and variables
         os.remove("history.txt")
+        shutil.rmtree("save_data")
         money = 0
         wins = 0
         ties = 0
-        osses = 0
+        losses = 0
         computer_input = ("UNDEFINED")
         rounds = 0
         player_input = 0
