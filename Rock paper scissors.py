@@ -103,6 +103,14 @@ while True:
           print("You lost...")
           losses += 1
           rounds += 1
+        else:
+          for i in range(3):
+            print("")
+            print("Error01: Computer gave invalid input.")
+            print("The computer is not computering")
+            print(f"(Computer gave {computer_input})")
+          for i in range(3):
+            print("")
       elif player_input == "p":
         if computer_input == "s":
           print("You lost...")
@@ -132,13 +140,12 @@ while True:
         print("")
         break
       else:
-          for i in range(3):
-            print("")
-          print("Error01: Computer gave invalid input.")
-          print("The computer is not computering")
-          print(f"(Computer gave {computer_input})")
-          for i in range(3):
-            print("")
+        for i in range(3):
+          print("")
+        print("Error02: Invalid input.")
+        print("I don't understand... There's clearly a misunderstanding...")
+        for i in range(3):
+          print("")
       #Find combos
       if pre_wins != wins:
         money += 1
