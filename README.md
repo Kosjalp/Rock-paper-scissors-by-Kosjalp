@@ -5,6 +5,7 @@
 *Requirements*<br/>
 -Python 3.6+<br/>
 -VSCode<br/>
+-No pip install needed<br/>
 
 *Info* <br/>
 This python script will save files to your computer. You can delete them in-game, however they can regenerate with new info.
