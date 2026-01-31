@@ -61,7 +61,7 @@ for i in range(3):
   print("")
 #Looping sequence
 while True:
-  player_input = input("play(p) quit(q) stats(s) reset(r), or credits(c)? ") #Get user input
+  player_input = input("play(p) quit(q) stats(s) reset(r), clear cache(e) or credits(c)? ") #Get user input
   #Playing sequence
   if player_input == "p":
     while True:
@@ -188,24 +188,16 @@ while True:
       player_input = input("Are you really sure? (Y/N) ") #Confirmation 2
       if player_input == "y":
         print("Ok then.")
-        #Deleting files and variables
-        if os.path.exists("history.txt"):
-          os.remove("history.txt")
+        #Deleting files, variables and folders
         #Delete folders
         if os.path.exists("save_data"):
           shutil.rmtree("save_data")
-        if os.path.exists("__pycache__"):
-          shutil.rmtree("__pycache__")
         #Reset variables
         money = 0
         wins = 0
         ties = 0
         losses = 0
-        computer_input = ("UNDEFINED")
         rounds = 0
-        player_input = 0
-        pre_wins = 0
-        combo_wins = 0
         #Deleting sequence
         print("Deleting data...")
         time.sleep(1)
@@ -225,6 +217,35 @@ while True:
     else:
       print("Cancel reset...")
       print("")
+  #Clearing cache
+  elif player_input == "e":
+    player_input = input("Are you sure you want to clear the cache? Theres nothing big, but it will clear your logon data AKA History.txt. (Y/N) ") #Confirm
+    if player_input == "y":
+      computer_input = ("UNDEFINED")
+      combo_wins = 0
+      player_input = 0
+      pre_wins = 0
+      if os.path.exists("__pycache__"):
+        shutil.rmtree("__pycache__")
+      if os.path.exists("history.txt"):
+          os.remove("history.txt")
+      #Cache clear sequence
+      print("Clearing cache...")
+      time.sleep(1)
+      print("Deleting files...")
+      time.sleep(1.5)
+      print("Deleting __pycache__...")
+      time.sleep(0.5)
+      print(".")
+      time.sleep(0.5)
+      print("..")
+      time.sleep(0.5)
+      print("...")
+      time.sleep(1)
+      print("Done!")
+      time.sleep(1)
+      for i in range(4):
+        print("")
   #Credits section
   elif player_input == "c":
     time.sleep(1)
