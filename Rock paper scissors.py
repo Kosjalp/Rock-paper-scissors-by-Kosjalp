@@ -66,8 +66,9 @@ while True:
   if player_input == "p":
     while True:
       computer_input = random.choice(choices) #Pick random computer input
-      player_input = input("Rock(r), paper(p), scissors(s), or leave playing(q)? ")
-      pre_wins = wins
+      player_input = input("Rock(r), paper(p), scissors(s), or leave playing(q)? ") #See what the player wants to play
+      pre_wins = wins #For combo detection
+      #Playing sequence
       if player_input == "r":
         if computer_input == "s":
           print("You win!")
@@ -114,6 +115,7 @@ while True:
           print("You win!")
           wins += 1
           rounds += 1
+      #Leave playing
       elif player_input == "q":
         print("")
         print("Leave playing chosen... returning to main menu.")
@@ -127,6 +129,7 @@ while True:
           print("The computer is not computering")
           for i in range(3):
             print("")
+      #Find combos
       if pre_wins != wins:
         money += 1
         combo_wins += 1
@@ -142,7 +145,7 @@ while True:
         print(f"You now have {money}$")
       elif pre_wins == wins:
         combo_wins = 0
-      updatesavedata(wins, money, losses, ties)
+      updatesavedata(wins, money, losses, ties) #Update save data
   #Stats section
   elif player_input == "s":
     print("Stats:")
@@ -170,8 +173,10 @@ while True:
         print("Ok then.")
         #Deleting files and variables
         os.remove("history.txt")
+        #Delete folders
         shutil.rmtree("save_data")
         shutil.rmtree("__pycache__")
+        #Reset variables
         money = 0
         wins = 0
         ties = 0
@@ -193,6 +198,14 @@ while True:
         #Skip a bunch of lines
         for i in range(100):
           print("")
+    #Cancel reset
+      else:
+        print("Cancel reset...")
+        print("")
+    else:
+      print("Cancel reset...")
+      print("")
+  #Credits section
   elif player_input == "c":
     time.sleep(1)
     print("Credits:")
