@@ -1,5 +1,7 @@
 # **Rock-paper-scissors-by-Kosjalp**
 
+![Static Badge](https://img.shields.io/badge/Windows%20tester%20needed-w?link=https%3A%2F%2Fgithub.com%2FKosjalp%2FRock-paper-scissors-by-Kosjalp%2Fissues%2F2)
+
 **Due to an error, releases 1.0-1.1.0 are identical**
 
 *Requirements*<br/>
