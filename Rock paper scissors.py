@@ -8,9 +8,11 @@ import getpass
 import os
 import datetime
 import shutil
+import platform
 from pathlib import Path
 from updatesavedata import updatesavedata
 from updateregulardata import updateregulardata
+from playsound import playsound
 #Define variables
 wins = 0
 ties = 0
@@ -20,9 +22,18 @@ choices = ["r", "p", "s"]
 rounds = 0
 money = 0
 combo_wins = 0
+operating_system = platform.system()
+playsoundfilepath = 0
 #Get user data
 user = getpass.getuser()
 time_at_logon = datetime.datetime.now().replace(microsecond=0)
+#Find OS
+if operating_system == "Darwin":
+  user_os = "UNIX"
+elif operating_system == "Windows":
+  user_os = "Windows"
+else:
+  print("Unknown operating system. Some functionalities such as sound may be limited.")
 #Write files
 if os.path.exists("history.txt"):
   pass
@@ -56,7 +67,7 @@ for i in range(3):
 print("Rock paper scissors")
 print("©Kosjalp studios inc. (not actually)")
 print("")
-time.sleep(2)
+playsound(user_os, playsoundfilepath=os.path.join("assets", "startup.mp3"))
 for i in range(3):
   print("")
 #Looping sequence
