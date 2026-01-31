@@ -87,6 +87,7 @@ while True:
             print("")
             print("Error01: Computer gave invalid input.")
             print("The computer is not computering")
+            print(f"(Computer gave {computer_input})")
           for i in range(3):
             print("")
       elif player_input == "s":
@@ -115,6 +116,14 @@ while True:
           print("You win!")
           wins += 1
           rounds += 1
+        else:
+          for i in range(3):
+            print("")
+            print("Error01: Computer gave invalid input.")
+            print("The computer is not computering")
+            print(f"(Computer gave {computer_input})")
+          for i in range(3):
+            print("")
       #Leave playing
       elif player_input == "q":
         print("")
@@ -127,6 +136,7 @@ while True:
             print("")
           print("Error01: Computer gave invalid input.")
           print("The computer is not computering")
+          print(f"(Computer gave {computer_input})")
           for i in range(3):
             print("")
       #Find combos
@@ -172,10 +182,13 @@ while True:
       if player_input == "y":
         print("Ok then.")
         #Deleting files and variables
-        os.remove("history.txt")
+        if os.path.exists("history.txt"):
+          os.remove("history.txt")
         #Delete folders
-        shutil.rmtree("save_data")
-        shutil.rmtree("__pycache__")
+        if os.path.exists("save_data"):
+          shutil.rmtree("save_data")
+        if os.path.exists("__pycache__"):
+          shutil.rmtree("__pycache__")
         #Reset variables
         money = 0
         wins = 0
