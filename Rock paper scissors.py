@@ -29,9 +29,11 @@ user = getpass.getuser()
 time_at_logon = datetime.datetime.now().replace(microsecond=0)
 #Find OS
 if operating_system == "Darwin":
-  user_os = "UNIX"
+  user_os = "Mac"
 elif operating_system == "Windows":
   user_os = "Windows"
+elif operating_system == "Linux":
+  user_os = "Linux"
 else:
   print("Unknown operating system. Some functionalities such as sound may be limited.")
 #Write files
@@ -67,7 +69,7 @@ for i in range(3):
 print("Rock paper scissors")
 print("©Kosjalp studios inc. (not actually)")
 print("")
-playsound(user_os, playsoundfilepath=os.path.join("assets", "startup.wav"))
+playsound(user_os, playsoundfilepath=os.path.join("assets", "startup.mp3"))
 for i in range(3):
   print("")
 #Looping sequence
