@@ -67,7 +67,7 @@ for i in range(3):
 print("Rock paper scissors")
 print("©Kosjalp studios inc. (not actually)")
 print("")
-playsound(user_os, playsoundfilepath=os.path.join("assets", "startup.mp3"))
+playsound(user_os, playsoundfilepath=os.path.join("assets", "startup.wav"))
 for i in range(3):
   print("")
 #Looping sequence
