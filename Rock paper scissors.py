@@ -176,16 +176,36 @@ while True:
         print(f"You now have {money}$")
       elif pre_wins == wins:
         combo_wins = 0
-      if wins == 1 and "First win: Get a win." not in achievements:
+      if wins == 1 and "First win: Get a win" not in achievements:
         print("")
         print("Achievement unlocked: First win")
         print("")
-        achievements.append("First win: Get a win.")
-      if wins == 10 and "Winner: Win ten times." not in achievements:
+        achievements.append("First win: Get a win")
+      if wins == 10 and "Winner: Win ten times" not in achievements:
         print("")
         print("Achievement unlocked: Winner")
         print("")
-        achievements.append("Winner: Win ten times.")
+        achievements.append("Winner: Win ten times")
+      if wins == 25 and "Champion: Get 25 wins" not in achievements:
+        print("")
+        print("Achievement unlocked: Champion")
+        print("")
+        achievements.append("Champion: Get 25 wins")
+      if combo_wins == 3 and "3 in a row: Get a combo of 3" not in achievements:
+        print("")
+        print("Achievement unlocked: 3 in a row")
+        print("")
+        achievements.append("3 in a row: Get a combo of 3")
+      if combo_wins == 5 and "Lucky: Get a combo of 5" not in achievements:
+        print("")
+        print("Achievement unlocked: Lucky")
+        print("")
+        achievements.append("Lucky: Get a combo of 5")
+      if combo_wins == 7 and "Lottery lucky: Get a combo of 7" not in achievements:
+        print("")
+        print("Achievement unlocked: Lottery lucky")
+        print("")
+        achievements.append("Lottery lucky: Get a combo of 7")
       updatesavedata(wins, money, losses, ties, achievements) #Update save data
   #Stats section
   elif player_input == "s":
