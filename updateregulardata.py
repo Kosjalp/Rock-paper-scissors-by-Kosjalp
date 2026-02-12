@@ -4,6 +4,7 @@ def updateregulardata():
     wins = 0
     losses = 0
     ties = 0
+    achievements = []
     if os.path.exists("save_data/money"):
       with open("save_data/money", "r") as h:
         money = int(h.read())
@@ -16,4 +17,7 @@ def updateregulardata():
     if os.path.exists("save_data/ties"):
       with open("save_data/ties", "r") as h:
         ties = int(h.read())
-    return money, wins, losses, ties
+    if os.path.exists("save_data/achievements"):
+      with open("save_data/achievements", "r") as h:
+        achievements = [line.strip() for line in h if line.strip()]
+    return money, wins, losses, ties, achievements
