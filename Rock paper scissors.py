@@ -19,6 +19,7 @@ ties = 0
 losses = 0
 computer_input = ("UNDEFINED")
 choices = ["r", "p", "s"]
+achievements = []
 rounds = 0
 money = 0
 combo_wins = 0
@@ -49,7 +50,7 @@ else:
   Path("save_data").mkdir(exist_ok=True)
 with open("history.txt", "a") as h:
   h.write(f"User {user} logged on at date {time_at_logon}\n")
-money, wins, losses, ties = updateregulardata()
+money, wins, losses, ties, achievements = updateregulardata()
 #Loading sequence
 print("Welcome to rock paper scissors!")
 time.sleep(1)
@@ -74,7 +75,7 @@ for i in range(3):
   print("")
 #Looping sequence
 while True:
-  player_input = input("play(p) quit(q) stats(s) reset(r), clear cache(e) or credits(c)? ") #Get user input
+  player_input = input("play(p) quit(q) stats(s) reset(r), clear cache(e), credits(c) or achievements(a)? ") #Get user input
   #Playing sequence
   if player_input == "p":
     while True:
@@ -175,7 +176,17 @@ while True:
         print(f"You now have {money}$")
       elif pre_wins == wins:
         combo_wins = 0
-      updatesavedata(wins, money, losses, ties) #Update save data
+      if wins == 1 and "First win: Get a win." not in achievements:
+        print("")
+        print("Achievement unlocked: First win")
+        print("")
+        achievements.append("First win: Get a win.")
+      if wins == 10 and "Winner: Win ten times." not in achievements:
+        print("")
+        print("Achievement unlocked: Winner")
+        print("")
+        achievements.append("Winner: Win ten times.")
+      updatesavedata(wins, money, losses, ties, achievements) #Update save data
   #Stats section
   elif player_input == "s":
     print("Stats:")
@@ -211,6 +222,7 @@ while True:
         ties = 0
         losses = 0
         rounds = 0
+        achievements = []
         #Deleting sequence
         print("Deleting data...")
         time.sleep(1)
@@ -286,6 +298,11 @@ while True:
     print("Thanks for playing!")
     for i in range(3):
       print("")
+  elif player_input == "a":
+    print("You have: ")
+    print("")
+    print("\n".join(achievements))
+    print("")
   else:
   #Error
   #Error01: Computer gives invalid input
