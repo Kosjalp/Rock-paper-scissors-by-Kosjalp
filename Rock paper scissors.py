@@ -153,6 +153,7 @@ while True:
         print("")
         print("")
         break
+      #Invalid input
       else:
         for i in range(3):
           print("")
@@ -176,6 +177,7 @@ while True:
         print(f"You now have {money}$")
       elif pre_wins == wins:
         combo_wins = 0
+      #Check for achievements
       if wins == 1 and "First win: Get a win" not in achievements:
         print("")
         print("Achievement unlocked: First win")
@@ -206,6 +208,11 @@ while True:
         print("Achievement unlocked: Lottery lucky")
         print("")
         achievements.append("Lottery lucky: Get a combo of 7")
+      if combo_wins == 7 and "Unlucky: Lose 3 times in a row" not in achievements:
+        print("")
+        print("Achievement unlocked: Unlucky")
+        print("")
+        achievements.append("Unlucky: Lose 3 times in a row")
       updatesavedata(wins, money, losses, ties, achievements) #Update save data
   #Stats section
   elif player_input == "s":
@@ -318,7 +325,7 @@ while True:
     print("Thanks for playing!")
     for i in range(3):
       print("")
-  elif player_input == "a":
+  elif player_input == "a": #Show achievements
     print("You have: ")
     print("")
     print("\n".join(achievements))
