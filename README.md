@@ -14,4 +14,4 @@ You can also use the files for info, hence why they even exist. History.txt cont
 This project was made on VSCode. Remember to set your open workplace folder to the folder where the script is stored.
 
 *Licence info* <br/>
-Do not distribute this project, however feel free to modify it and then release it on github while crediting me. Also if you do this please give me the link (using issues) so I can see it.
+Do not distribute this project, however feel free to modify it and then release it on github while crediting me. Also if you do this please give me the link [here](https://github.com/Kosjalp/Rock-paper-scissors-by-Kosjalp/discussions/5) so I can see it.
