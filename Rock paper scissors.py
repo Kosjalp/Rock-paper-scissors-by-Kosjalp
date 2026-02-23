@@ -25,6 +25,8 @@ money = 0
 combo_wins = 0
 operating_system = platform.system()
 playsoundfilepath = 0
+pre_losses = 0
+combo_losses = 0
 #Get user data
 user = getpass.getuser()
 time_at_logon = datetime.datetime.now().replace(microsecond=0)
@@ -82,6 +84,7 @@ while True:
       computer_input = random.choice(choices) #Pick random computer input
       player_input = input("Rock(r), paper(p), scissors(s), or leave playing(q)? ") #See what the player wants to play
       pre_wins = wins #For combo detection
+      pre_losses = losses
       #Playing sequence
       if player_input == "r":
         if computer_input == "s":
@@ -177,6 +180,10 @@ while True:
         print(f"You now have {money}$")
       elif pre_wins == wins:
         combo_wins = 0
+      if pre_losses != losses:
+        combo_losses += 1
+      elif pre_losses == losses:
+        combo_losses = 0
       #Check for achievements
       if wins == 1 and "First win: Get a win" not in achievements:
         print("")
@@ -208,11 +215,16 @@ while True:
         print("Achievement unlocked: Lottery lucky")
         print("")
         achievements.append("Lottery lucky: Get a combo of 7")
-      if combo_wins == 7 and "Unlucky: Lose 3 times in a row" not in achievements:
+      if combo_losses == 3 and "Unlucky: Lose 3 times in a row" not in achievements:
         print("")
         print("Achievement unlocked: Unlucky")
         print("")
         achievements.append("Unlucky: Lose 3 times in a row")
+      if wins == 50 and "King of the wins: win 50 times" not in achievements:
+        print("")
+        print("Achievement unlocked: King of the wins")
+        print("")
+        achievements.append("King of the wins: win 50 times")
       updatesavedata(wins, money, losses, ties, achievements) #Update save data
   #Stats section
   elif player_input == "s":
