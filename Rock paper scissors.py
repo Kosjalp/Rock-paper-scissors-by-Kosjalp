@@ -9,6 +9,7 @@ import os
 import datetime
 import shutil
 import platform
+import webbrowser
 from pathlib import Path
 from updatesavedata import updatesavedata
 from updateregulardata import updateregulardata
@@ -77,9 +78,10 @@ for i in range(3):
   print("")
 #Looping sequence
 while True:
-  player_input = input("play(p) quit(q) stats(s) reset(r), clear cache(e), credits(c) or achievements(a)? ") #Get user input
+  player_input = input("play(p) quit(q) stats(s) reset(r), credits(c), achievements(a), or more (m)? ") #Get user input
   #Playing sequence
   if player_input == "p":
+    playsound(user_os, playsoundfilepath=os.path.join("assets", "play.wav"))
     while True:
       computer_input = random.choice(choices) #Pick random computer input
       player_input = input("Rock(r), paper(p), scissors(s), or leave playing(q)? ") #See what the player wants to play
@@ -161,7 +163,7 @@ while True:
         for i in range(3):
           print("")
         print("Error02: Invalid input.")
-        print("I don't understand... There's clearly a misunderstanding...")
+        print("There's clearly a misunderstanding...")
         for i in range(3):
           print("")
       #Find combos
@@ -243,6 +245,7 @@ while True:
     print("Manual quit")
     for i in range(3):
       print("")
+    playsound(user_os, playsoundfilepath=os.path.join("assets", "shut_down.wav"))
     quit("Thanks for playing!")
 #Deleting data
   elif player_input == "r":
@@ -281,35 +284,6 @@ while True:
     else:
       print("Cancel reset...")
       print("")
-  #Clearing cache
-  elif player_input == "e":
-    player_input = input("Are you sure you want to clear the cache? Theres nothing big, but it will clear your logon data AKA History.txt. (Y/N) ") #Confirm
-    if player_input == "y":
-      computer_input = ("UNDEFINED")
-      combo_wins = 0
-      player_input = 0
-      pre_wins = 0
-      if os.path.exists("__pycache__"):
-        shutil.rmtree("__pycache__")
-      if os.path.exists("history.txt"):
-          os.remove("history.txt")
-      #Cache clear sequence
-      print("Clearing cache...")
-      time.sleep(1)
-      print("Deleting files...")
-      time.sleep(1.5)
-      print("Deleting __pycache__...")
-      time.sleep(0.5)
-      print(".")
-      time.sleep(0.5)
-      print("..")
-      time.sleep(0.5)
-      print("...")
-      time.sleep(1)
-      print("Done!")
-      time.sleep(1)
-      for i in range(4):
-        print("")
   #Credits section
   elif player_input == "c":
     time.sleep(1)
@@ -332,6 +306,8 @@ while True:
     print("")
     print("Tested by Quadakr on github")
     print("")
+    time.sleep(1)
+    print("Asset credits can be found in assets/asset-licence.md")
     print("")
     time.sleep(1)
     print("Thanks for playing!")
@@ -342,6 +318,60 @@ while True:
     print("")
     print("\n".join(achievements))
     print("")
+  elif player_input == "m": #More menu
+    print("More:")
+    print("")
+    print("Go to github repo (g)")
+    print("Clear cache (c)")
+    print("Back (b)")
+    print("")
+    player_input = input("")
+    if player_input == "g":
+      print("Opening web browser...")
+      webbrowser.open("https://github.com/Kosjalp/Rock-paper-scissors-by-Kosjalp")
+      time.sleep(0.5)
+      print("Done!")
+      print("If your web browser hasn't opened, please report this bug.")
+      print("")
+    elif player_input == "b":
+      print("Returning to main menu...")
+      print("")
+    #Clearing cache
+    elif player_input == "c":
+      player_input = input("Are you sure you want to clear the cache? Theres nothing big, but it will clear your logon data AKA History.txt. (Y/N) ") #Confirm
+      if player_input == "y":
+        computer_input = ("UNDEFINED")
+        combo_wins = 0
+        player_input = 0
+        pre_wins = 0
+        if os.path.exists("__pycache__"):
+          shutil.rmtree("__pycache__")
+        if os.path.exists("history.txt"):
+          os.remove("history.txt")
+        #Cache clear sequence
+        print("Clearing cache...")
+        time.sleep(1)
+        print("Deleting files...")
+        time.sleep(1.5)
+        print("Deleting __pycache__...")
+        time.sleep(0.5)
+        print(".")
+        time.sleep(0.5)
+        print("..")
+        time.sleep(0.5)
+        print("...")
+        time.sleep(1)
+        print("Done!")
+        time.sleep(1)
+        for i in range(4):
+          print("")
+    else:
+      for i in range(3):
+        print("")
+      print("Error02: Invalid input.")
+      print("'What we have here is a failure to communicate'")
+      for i in range(3):
+        print("")
   else:
   #Error
   #Error01: Computer gives invalid input
@@ -349,6 +379,6 @@ while True:
     for i in range(3):
       print("")
     print("Error02: Invalid input.")
-    print("I don't understand... There's clearly a misunderstanding...")
+    print("There's clearly a misunderstanding...")
     for i in range(3):
       print("")
