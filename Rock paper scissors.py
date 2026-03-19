@@ -78,7 +78,7 @@ for i in range(3):
   print("")
 #Looping sequence
 while True:
-  player_input = input("play(p) quit(q) stats(s) reset(r), credits(c), achievements(a), or more (m)? ") #Get user input
+  player_input = input("play(p), quit(q), stats(s), achievements(a), or more(m)? ") #Get user input
   #Playing sequence
   if player_input == "p":
     playsound(user_os, playsoundfilepath=os.path.join("assets", "play.wav"))
@@ -247,82 +247,23 @@ while True:
       print("")
     playsound(user_os, playsoundfilepath=os.path.join("assets", "shut_down.wav"))
     quit("Thanks for playing!")
-#Deleting data
-  elif player_input == "r":
-    player_input = input("Are you sure you want to reset the game? (Y/N) ") #Confirmation 1
-    if player_input == "y":
-      player_input = input("Are you really sure? (Y/N) ") #Confirmation 2
-      if player_input == "y":
-        print("Ok then.")
-        #Deleting files, variables and folders
-        #Delete folders
-        if os.path.exists("save_data"):
-          shutil.rmtree("save_data")
-        #Reset variables
-        money = 0
-        wins = 0
-        ties = 0
-        losses = 0
-        rounds = 0
-        achievements = []
-        #Deleting sequence
-        print("Deleting data...")
-        time.sleep(1)
-        print("Deleting stats...")
-        time.sleep(1)
-        print("Deleting history.txt...")
-        time.sleep(2)
-        print("Done!")
-        time.sleep(2)
-        #Skip a bunch of lines
-        for i in range(100):
-          print("")
-    #Cancel reset
-      else:
-        print("Cancel reset...")
-        print("")
-    else:
-      print("Cancel reset...")
-      print("")
-  #Credits section
-  elif player_input == "c":
-    time.sleep(1)
-    print("Credits:")
-    print("")
-    time.sleep(1)
-    print("Made by Kosjalp on github")
-    print("https://github.com/Kosjalp")
-    print("")
-    time.sleep(2)
-    print("Hosted on GitHub")
-    print("https://github.com/Kosjalp/Rock-paper-scissors-by-Kosjalp")
-    print("")
-    time.sleep(2)
-    print("Thank you to:")
-    time.sleep(1)
-    print("")
-    print("Techspark academy for inspiration")
-    time.sleep(1)
-    print("")
-    print("Tested by Quadakr on github")
-    print("")
-    time.sleep(1)
-    print("Asset credits can be found in assets/asset-licence.md")
-    print("")
-    time.sleep(1)
-    print("Thanks for playing!")
-    for i in range(3):
-      print("")
   elif player_input == "a": #Show achievements
     print("You have: ")
     print("")
     print("\n".join(achievements))
+    print("")
+  elif player_input == "shop-beta": #Shop
+    print("Shop:")
+    print("")
+    print("Not done yet (placeholder)")
     print("")
   elif player_input == "m": #More menu
     print("More:")
     print("")
     print("Go to github repo (g)")
     print("Clear cache (c)")
+    print("Credits (t)")
+    print("Reset (r)")
     print("Back (b)")
     print("")
     player_input = input("")
@@ -365,6 +306,72 @@ while True:
         time.sleep(1)
         for i in range(4):
           print("")
+      #Credits section
+    elif player_input == "t":
+      time.sleep(1)
+      print("Credits:")
+      print("")
+      time.sleep(1)
+      print("Made by Kosjalp on github")
+      print("https://github.com/Kosjalp")
+      print("")
+      time.sleep(2)
+      print("Hosted on GitHub")
+      print("https://github.com/Kosjalp/Rock-paper-scissors-by-Kosjalp")
+      print("")
+      time.sleep(2)
+      print("Thank you to:")
+      time.sleep(1)
+      print("")
+      print("Techspark academy for inspiration")
+      time.sleep(1)
+      print("")
+      print("Tested by Quadakr on github")
+      print("")
+      time.sleep(1)
+      print("Asset credits can be found in assets/asset-licence.md")
+      print("")
+      time.sleep(1)
+      print("Thanks for playing!")
+      for i in range(3):
+        print("")
+      #Deleting data
+    elif player_input == "r":
+      player_input = input("Are you sure you want to reset the game? (Y/N) ") #Confirmation 1
+      if player_input == "y":
+        player_input = input("Are you really sure? (Y/N) ") #Confirmation 2
+        if player_input == "y":
+          print("Ok then.")
+          #Deleting files, variables and folders
+          #Delete folders
+          if os.path.exists("save_data"):
+            shutil.rmtree("save_data")
+          #Reset variables
+          money = 0
+          wins = 0
+          ties = 0
+          losses = 0
+          rounds = 0
+          achievements = []
+          #Deleting sequence
+          print("Deleting data...")
+          time.sleep(1)
+          print("Deleting stats...")
+          time.sleep(1)
+          print("Deleting history.txt...")
+          time.sleep(2)
+          print("Done!")
+          time.sleep(2)
+          #Skip a bunch of lines
+          for i in range(100):
+            print("")
+      #Cancel reset
+        else:
+          print("Cancel reset...")
+          print("")
+      else:
+        print("Cancel reset...")
+        print("")
     else:
       for i in range(3):
         print("")
