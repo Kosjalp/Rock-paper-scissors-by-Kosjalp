@@ -14,6 +14,7 @@ from pathlib import Path
 from updatesavedata import updatesavedata
 from updateregulardata import updateregulardata
 from playsound import playsound
+from awardachievement import award_achievement
 #Define variables
 wins = 0
 ties = 0
@@ -187,46 +188,14 @@ while True:
       elif pre_losses == losses:
         combo_losses = 0
       #Check for achievements
-      if wins == 1 and "First win: Get a win" not in achievements:
-        print("")
-        print("Achievement unlocked: First win")
-        print("")
-        achievements.append("First win: Get a win")
-      if wins == 10 and "Winner: Win ten times" not in achievements:
-        print("")
-        print("Achievement unlocked: Winner")
-        print("")
-        achievements.append("Winner: Win ten times")
-      if wins == 25 and "Champion: Get 25 wins" not in achievements:
-        print("")
-        print("Achievement unlocked: Champion")
-        print("")
-        achievements.append("Champion: Get 25 wins")
-      if combo_wins == 3 and "3 in a row: Get a combo of 3" not in achievements:
-        print("")
-        print("Achievement unlocked: 3 in a row")
-        print("")
-        achievements.append("3 in a row: Get a combo of 3")
-      if combo_wins == 5 and "Lucky: Get a combo of 5" not in achievements:
-        print("")
-        print("Achievement unlocked: Lucky")
-        print("")
-        achievements.append("Lucky: Get a combo of 5")
-      if combo_wins == 7 and "Lottery lucky: Get a combo of 7" not in achievements:
-        print("")
-        print("Achievement unlocked: Lottery lucky")
-        print("")
-        achievements.append("Lottery lucky: Get a combo of 7")
-      if combo_losses == 3 and "Unlucky: Lose 3 times in a row" not in achievements:
-        print("")
-        print("Achievement unlocked: Unlucky")
-        print("")
-        achievements.append("Unlucky: Lose 3 times in a row")
-      if wins == 50 and "King of the wins: win 50 times" not in achievements:
-        print("")
-        print("Achievement unlocked: King of the wins")
-        print("")
-        achievements.append("King of the wins: win 50 times")
+      award_achievement(wins, True, 1, "First win: Get a win", achievements)
+      award_achievement(wins, True, 10, "Winner: Win ten times", achievements)
+      award_achievement(wins, True, 25, "Champion: Get 25 wins", achievements)
+      award_achievement(wins, True, 50, "King of the wins: win 50 times", achievements)
+      award_achievement(combo_wins, True, 3, "3 in a row: Get a combo of 3", achievements)
+      award_achievement(combo_wins, True, 5, "Lucky: Get a combo of 5", achievements)
+      award_achievement(combo_wins, True, 7, "Lottery lucky: Get a combo of 7", achievements)
+      award_achievement(combo_losses, True, 3, "Unlucky: Lose 3 times in a row", achievements)
       updatesavedata(wins, money, losses, ties, achievements) #Update save data
   #Stats section
   elif player_input == "s":
@@ -245,7 +214,7 @@ while True:
     print("Manual quit")
     for i in range(3):
       print("")
-    playsound(user_os, playsoundfilepath=os.path.join("assets", "shut_down.wav"))
+    playsound(user_os, playsoundfilepath=os.path.join("assets", "shut_down.wav"), async_play=False)
     quit("Thanks for playing!")
   elif player_input == "a": #Show achievements
     print("You have: ")
