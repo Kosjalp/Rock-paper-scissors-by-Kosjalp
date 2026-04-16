@@ -230,19 +230,25 @@ while True:
     if "Test 2" not in purchases: print("(2) Test 2 --1$")
     print("(b) Back")
     print("")
-    player_input = input("Enter choice: ")
+    player_input = input("Enter choice: ") #Get input
+    #Check input:
     if player_input == "1":
-      if money >= 1:
-        money -= 1
-        purchases.append("Test")
+      if money >= 1: #Check if enough money
+        money -= 1 #Bill the player
+        purchases.append("Test") #Add to purchases list
+        #Notify player
         print("Aquired test.")
         print("")
+      else: #In case not enough money
+        print("You do not have enough money to buy this item!")
     elif player_input == "2":
       if money >= 1:
         money -= 1
         purchases.append("Test 2")
         print("Aquired test 2.")
         print("")
+      else:
+        print("You do not have enough money to buy this item!")
     elif player_input == "b":
       print("Returning to main menu...")
       print("")
@@ -266,7 +272,7 @@ while True:
         os.remove("history.txt")
       if os.path.exists("save_data"):
           shutil.rmtree("save_data")
-      quit("Game is reset and ready for publish")
+      quit("Game is reset and ready for publish") #Quit
       money = 0
       wins = 0
       ties = 0
