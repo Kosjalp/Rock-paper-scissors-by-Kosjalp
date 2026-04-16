@@ -1,5 +1,5 @@
 import os
-def updatesavedata(wins, money, losses, ties, achievements):
+def updatesavedata(wins, money, losses, ties, achievements, purchases):
   os.makedirs("save_data", exist_ok=True)
   with open("save_data/money", "w") as h:
     h.write(str(money))
@@ -11,7 +11,8 @@ def updatesavedata(wins, money, losses, ties, achievements):
     h.write(str(ties))
   with open("save_data/achievements", "w") as h:
     for a in achievements:
-        if isinstance(a, list):
             h.write(f"{a}\n")
-        else:
-            h.write(f"{a}\n")
+  with open("save_data/purchases", "w") as h:
+    for p in purchases:
+        h.write(f"{p}\n")
+

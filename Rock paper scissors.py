@@ -21,6 +21,7 @@ ties = 0
 losses = 0
 computer_input = ("UNDEFINED")
 choices = ["r", "p", "s"]
+purchases = []
 achievements = []
 rounds = 0
 money = 0
@@ -54,7 +55,7 @@ else:
   Path("save_data").mkdir(exist_ok=True)
 with open("history.txt", "a") as h:
   h.write(f"User {user} logged on at date {time_at_logon}\n")
-money, wins, losses, ties, achievements = updateregulardata()
+money, wins, losses, ties, achievements, purchases = updateregulardata()
 #Loading sequence
 print("Welcome to rock paper scissors!")
 time.sleep(1)
@@ -188,15 +189,15 @@ while True:
       elif pre_losses == losses:
         combo_losses = 0
       #Check for achievements
-      award_achievement(wins, True, 1, "First win: Get a win", achievements)
-      award_achievement(wins, True, 10, "Winner: Win ten times", achievements)
-      award_achievement(wins, True, 25, "Champion: Get 25 wins", achievements)
-      award_achievement(wins, True, 50, "King of the wins: win 50 times", achievements)
-      award_achievement(combo_wins, True, 3, "3 in a row: Get a combo of 3", achievements)
-      award_achievement(combo_wins, True, 5, "Lucky: Get a combo of 5", achievements)
-      award_achievement(combo_wins, True, 7, "Lottery lucky: Get a combo of 7", achievements)
-      award_achievement(combo_losses, True, 3, "Unlucky: Lose 3 times in a row", achievements)
-      updatesavedata(wins, money, losses, ties, achievements) #Update save data
+      award_achievement(wins, True, 0, "First win: Get a win", achievements)
+      award_achievement(wins, True, 9, "Winner: Win ten times", achievements)
+      award_achievement(wins, True, 24, "Champion: Get 25 wins", achievements)
+      award_achievement(wins, True, 49, "King of the wins: win 50 times", achievements)
+      award_achievement(combo_wins, True, 2, "3 in a row: Get a combo of 3", achievements)
+      award_achievement(combo_wins, True, 4, "Lucky: Get a combo of 5", achievements)
+      award_achievement(combo_wins, True, 6, "Lottery lucky: Get a combo of 7", achievements)
+      award_achievement(combo_losses, True, 2, "Unlucky: Lose 3 times in a row", achievements)
+      updatesavedata(wins, money, losses, ties, achievements, purchases) #Update save data
   #Stats section
   elif player_input == "s":
     print("Stats:")
@@ -224,8 +225,55 @@ while True:
   elif player_input == "shop-beta": #Shop
     print("Shop:")
     print("")
-    print("Not done yet (placeholder)")
+    print("Not done yet")
+    if "Test" not in purchases: print("(1) Test --1$")
+    if "Test 2" not in purchases: print("(2) Test 2 --1$")
+    print("(b) Back")
     print("")
+    player_input = input("Enter choice: ")
+    if player_input == "1":
+      if money >= 1:
+        money -= 1
+        purchases.append("Test")
+        print("Aquired test.")
+        print("")
+    elif player_input == "2":
+      if money >= 1:
+        money -= 1
+        purchases.append("Test 2")
+        print("Aquired test 2.")
+        print("")
+    elif player_input == "b":
+      print("Returning to main menu...")
+      print("")
+    else:
+      for i in range(3):
+        print("")
+      print("Error02: Invalid input.")
+      print("'No refunds!'")
+      for i in range(3):
+        print("")
+    updatesavedata(wins, money, losses, ties, achievements, purchases) #Update save data for shop
+  elif player_input == "package.prepare": #Dev command to fully wipe data to publish
+    if input("Are you sure you want to reset the game entirely to prepare for publish? (y/n) ") == "y":
+      computer_input = ("UNDEFINED")
+      combo_wins = 0
+      player_input = 0
+      pre_wins = 0
+      if os.path.exists("__pycache__"):
+        shutil.rmtree("__pycache__")
+      if os.path.exists("history.txt"):
+        os.remove("history.txt")
+      if os.path.exists("save_data"):
+          shutil.rmtree("save_data")
+      quit("Game is reset and ready for publish")
+      money = 0
+      wins = 0
+      ties = 0
+      losses = 0
+      rounds = 0
+      achievements = []
+      purchases = []
   elif player_input == "m": #More menu
     print("More:")
     print("")
@@ -322,6 +370,7 @@ while True:
           losses = 0
           rounds = 0
           achievements = []
+          purchases = []
           #Deleting sequence
           print("Deleting data...")
           time.sleep(1)
