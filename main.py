@@ -34,25 +34,18 @@ combo_losses = 0
 user = getpass.getuser()
 time_at_logon = datetime.datetime.now().replace(microsecond=0)
 #Find OS
-if operating_system == "Darwin":
-  user_os = "Mac"
-elif operating_system == "Windows":
-  user_os = "Windows"
-elif operating_system == "Linux":
-  user_os = "Linux"
-else:
-  print("Unknown operating system. Some functionalities such as sound may be limited.")
+if operating_system == "Darwin": user_os = "Mac"
+elif operating_system == "Windows": user_os = "Windows"
+elif operating_system == "Linux": user_os = "Linux"
+else: print("Unknown operating system. Some functionalities such as sound may be limited.")
 #Write files
-if os.path.exists("history.txt"):
-  pass
+if os.path.exists("history.txt"): pass
 else:
   with open("history.txt", "w") as h:
     h.write("Rock paper scissors logon history: \n")
     h.write("\n")
-if os.path.exists("save_data"):
-  pass
-else:
-  Path("save_data").mkdir(exist_ok=True)
+if os.path.exists("save_data"): pass
+else: Path("save_data").mkdir(exist_ok=True)
 with open("history.txt", "a") as h:
   h.write(f"User {user} logged on at date {time_at_logon}\n")
 money, wins, losses, ties, achievements, purchases = updateregulardata()
@@ -212,11 +205,15 @@ while True:
     print("Overall score:", score)
   #Quitting
   elif player_input == "q":
-    print("Manual quit")
-    for i in range(3):
+    if input("Are you sure you would like to quit? The game saves even if you quit. (y/n)") == "y":
+      print("Manual quit")
+      for i in range(3):
+        print("")
+      playsound(user_os, playsoundfilepath=os.path.join("assets", "shut_down.wav"), async_play=False)
+      quit("Thanks for playing!")
+    else:
+      print("Cancelled quit.")
       print("")
-    playsound(user_os, playsoundfilepath=os.path.join("assets", "shut_down.wav"), async_play=False)
-    quit("Thanks for playing!")
   elif player_input == "a": #Show achievements
     print("You have: ")
     print("")
@@ -272,7 +269,6 @@ while True:
         os.remove("history.txt")
       if os.path.exists("save_data"):
           shutil.rmtree("save_data")
-      quit("Game is reset and ready for publish") #Quit
       money = 0
       wins = 0
       ties = 0
@@ -280,6 +276,7 @@ while True:
       rounds = 0
       achievements = []
       purchases = []
+      quit("Game is reset and ready for publish") #Quit
   elif player_input == "m": #More menu
     print("More:")
     print("")
@@ -302,7 +299,7 @@ while True:
       print("")
     #Clearing cache
     elif player_input == "c":
-      player_input = input("Are you sure you want to clear the cache? Theres nothing big, but it will clear your logon data AKA History.txt. (Y/N) ") #Confirm
+      player_input = input("Are you sure you want to clear the cache? There's nothing big, but it will clear your logon data AKA History.txt. (Y/N) ") #Confirm
       if player_input == "y":
         computer_input = ("UNDEFINED")
         combo_wins = 0
