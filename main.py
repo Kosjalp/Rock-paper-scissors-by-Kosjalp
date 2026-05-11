@@ -141,9 +141,9 @@ while True:
         else:
           for i in range(3):
             print("")
-            print("Error01: Computer gave invalid input.")
-            print("The computer is not computering")
-            print(f"(Computer gave {computer_input})")
+          print("Error01: Computer gave invalid input.")
+          print("The computer is not computering")
+          print(f"(Computer gave {computer_input})")
           for i in range(3):
             print("")
       #Leave playing
@@ -334,10 +334,6 @@ while True:
       time.sleep(1)
       print("Made by Kosjalp on github")
       print("https://github.com/Kosjalp")
-      print("")
-      time.sleep(2)
-      print("Hosted on GitHub")
-      print("https://github.com/Kosjalp/Rock-paper-scissors-by-Kosjalp")
       print("")
       time.sleep(2)
       print("Thank you to:")
